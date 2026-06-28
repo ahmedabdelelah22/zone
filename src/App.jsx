@@ -1,11 +1,13 @@
 import { useState } from "react";
-import {Snowflake , Coffee , CupSoda , Blender  ,ThermometerSun,Sparkles  }  from "lucide-react"
+import {Snowflake , Coffee , CupSoda , Blender  ,ThermometerSun,Sparkles ,Sun, Moon }  from "lucide-react"
+import  logo  from "./assets/logo.png"
+import darkLogo from "./assets/darkLogo.png"
 
 const SECTIONS = [
   {
     id: "coffee", label: "Coffee", emoji:Coffee,
     items: [
-      { name: "Espresso", price: 35 },
+      { name: "Espresso", price: 40 },
       { name: "Turkish Coffee", price: 35 },
       { name: "French Coffee", price: 45 },
       { name: "Macchiato", price: 50 },
@@ -72,7 +74,27 @@ const SECTIONS = [
     addonPrice: 20,
   },
 ];
-
+// function ZoneSpotLogo({ size = 56, brown = "#5C3018" }) {
+//   return (
+//     <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
+//       {/* Outer dotted ring */}
+//       <circle cx="50" cy="50" r="44" stroke={brown} strokeWidth="2"
+//         strokeDasharray="4 3.2" strokeLinecap="round" fill="none" />
+//       {/* Inner solid ring */}
+//       <circle cx="50" cy="50" r="38" stroke={brown} strokeWidth="1" fill="none" opacity="0.3" />
+//       {/* Cup body */}
+//       <path d="M34 42 L36 68 Q36 72 40 72 L60 72 Q64 72 64 68 L66 42 Z"
+//         fill={brown} />
+//       {/* Cup rim */}
+//       <rect x="31" y="38" width="38" height="6" rx="3" fill={brown} />
+//       {/* Straw */}
+//       <rect x="54" y="24" width="4" height="22" rx="2" fill={brown} transform="rotate(-8 56 35)" />
+//       {/* Whipped cream dome */}
+//       <ellipse cx="50" cy="40" rx="14" ry="7" fill="#F5E6CC" opacity="0.85" />
+//       <path d="M38 40 Q44 33 50 38 Q56 33 62 40" stroke={brown} strokeWidth="1.5" fill="none" />
+//     </svg>
+//   );
+// }
 const L = {
   page:        "#EDE0C8",
   header:      "#3B2008",
@@ -127,12 +149,7 @@ const D = {
   shadow:      "rgba(0,0,0,0.4)",
 };
 
-function Moon() {
-  return <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>;
-}
-function Sun() {
-  return <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>;
-}
+
 
 export default function CafeMenu() {
   const [isDark, setIsDark] = useState(false);
@@ -161,15 +178,17 @@ export default function CafeMenu() {
         boxShadow: `0 2px 12px ${c.shadow}`,
         transition: "background 0.3s",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <span style={{ fontSize: 20 }}>☕</span>
+        <div style={{ display: "flex", alignItems: "center" }}>
+           <img src={isDark? darkLogo : logo} alt="logo" width={50} />
+          {/* <span style={{ fontSize: 20 }}>☕</span> */}
           <span style={{
             fontFamily: "'Cormorant Garamond', serif",
             fontSize: 20, fontWeight: 600,
             color: c.headerFg,
             letterSpacing: "0.02em",
+               marginTop:" 4px"
           }}>
-            Café Menu
+            ZONE SPOT
           </span>
         </div>
         <button
@@ -186,7 +205,7 @@ export default function CafeMenu() {
           }}
           aria-label="Toggle theme"
         >
-          {isDark ? <Sun /> : <Moon />}
+          {isDark ? <Sun size={15}/> : <Moon size={15}/>}
           
         </button>
       </header>
@@ -203,14 +222,23 @@ export default function CafeMenu() {
         <div style={{ position: "absolute", top: -40, right: -40, width: 200, height: 200, borderRadius: "50%", background: "rgba(255,255,255,0.03)" }} />
         <div style={{ position: "absolute", bottom: -60, right: 60, width: 140, height: 140, borderRadius: "50%", background: "rgba(255,255,255,0.04)" }} />
 
-        <p style={{
+        {/* <p style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 10, fontWeight: 600, letterSpacing: "0.18em",
           textTransform: "uppercase", color: c.accent,
-          marginBottom: 14,
-        }}>
-          ✦ Est. 2024 ✦
-        </p>
+          marginBottom: 10,
+        }}> */}
+         <img src={isDark ? darkLogo :  logo}  alt="logo" width={150} />
+        {/* </p> */}
+           <div style={{ display:"flex", alignItems:"center", gap:10, justifyContent:"center" }}>
+          <div style={{ width:28, height:1, background:c.textMuted }} />
+          <span style={{
+            fontFamily:"'Inter', sans-serif",
+            fontSize:10, fontWeight:600, letterSpacing:"0.2em",
+            textTransform:"uppercase", color:c.navSub,
+          }}>Est. 2024</span>
+          <div style={{ width:28, height:1, background:c.textMuted }} />
+        </div>
         <h1 style={{
           fontFamily: "'Cormorant Garamond', serif",
           fontSize: 42, fontWeight: 700,
@@ -405,8 +433,7 @@ export default function CafeMenu() {
                       fontFamily: "'Inter', sans-serif",
                       fontSize: 12, color: c.textSub,
                       lineHeight: 1.6, fontWeight: 400,
-                      paddingLeft: 16,
-                      
+                      paddingLeft:16,textAlign:"start"
                     }}>
                       {g.sub}
                     </div>
@@ -490,6 +517,24 @@ export default function CafeMenu() {
         background: c.surface,
         transition: "background 0.3s",
       }}>
+         <div style={{ marginBottom:10, display:"flex", justifyContent:"center" }}>
+          <img src={darkLogo} alt="logo" wdith={50} height={50} color="#C89040"/>
+          {/* <ZoneSpotLogo size={36} brown={isDark?"#C89040":"#C8A060"} /> */}
+        </div>
+        <div style={{
+          fontFamily:"'Cormorant Garamond', serif",
+          fontSize:16, fontStyle:"italic",
+          color:c.navSub, marginBottom:6,
+        }}>
+          Zone Spot
+        </div>
+            <div style={{
+          fontFamily:"'Inter', sans-serif",
+          fontSize:9, letterSpacing:"0.14em",
+          color:c.textMuted, textTransform:"uppercase",
+        }}>
+          امتدا بوابة توشكى · آخر سور الجامعة ـ امام كوبري الجامعة
+        </div>
         <p style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 10, color: c.textMuted,
