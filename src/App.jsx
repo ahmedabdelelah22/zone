@@ -3,6 +3,145 @@ import {Snowflake , Coffee , CupSoda , Blender  ,ThermometerSun,Sparkles ,Sun, M
 import  logo  from "./assets/logo.png"
 import darkLogo from "./assets/darkLogo.png"
 
+// ─── Translations ───────────────────────────────────────────────────────────
+const T = {
+  en: {
+    heroTitle: ["What would you", "like today?"],
+    heroSub: "Customize any drink with add-ons · +20 L.E each",
+    est: "Est. 2024",
+    perAddition: "Per addition",
+    addedTo: "Added to any drink",
+    addFlavors: "Add any of the following flavors to your drink for an extra charge.",
+    items: "items",
+    allPrices: "All prices inclusive of taxes · Thank you for your visit",
+    address: "Next to Toshka Gate · Last university wall, opposite the university bridge",
+    sections: {
+      coffee: "Coffee",
+      iced: "Iced",
+      hot: "Hot Drinks",
+      juice: "Fresh Juice",
+      specials: "Specials",
+      addons: "Add-ons",
+    },
+    drinks: {
+      "Espresso": "Espresso",
+      "Turkish Coffee": "Turkish Coffee",
+      "French Coffee": "French Coffee",
+      "Macchiato": "Macchiato",
+      "Hazelnut Coffee": "Hazelnut Coffee",
+      "Americano": "Americano",
+      "Cortado": "Cortado",
+      "Flat White": "Flat White",
+      "Cappuccino": "Cappuccino",
+      "Latte": "Latte",
+      "Spanish Latte": "Spanish Latte",
+      "Mocha": "Mocha",
+      "Caramel Macchiato": "Caramel Macchiato",
+      "Iced Americano": "Iced Americano",
+      "Iced Tea": "Iced Tea",
+      "Iced Latte": "Iced Latte",
+      "Iced Cappuccino": "Iced Cappuccino",
+      "Iced Chocolate": "Iced Chocolate",
+      "Iced Mocha": "Iced Mocha",
+      "Iced Spanish Latte": "Iced Spanish Latte",
+      "Iced Caramel Macchiato": "Iced Caramel Macchiato",
+      "Iced White Mocha": "Iced White Mocha",
+      "Classic Tea": "Classic Tea",
+      "Flavour Tea": "Flavour Tea",
+      "Karak Tea": "Karak Tea",
+      "Hot Cider": "Hot Cider",
+      "Sahlab": "Sahlab",
+      "Hot Chocolate": "Hot Chocolate",
+      "Strawberry": "Strawberry",
+      "Mango": "Mango",
+      "Banana": "Banana",
+      "Kiwi": "Kiwi",
+      "Lemon Mint": "Lemon Mint",
+      "Avocado": "Avocado",
+      "Smoothie": "Smoothie",
+      "Milk Shake": "Milk Shake",
+      "Frappé": "Frappé",
+      "Mojito": "Mojito",
+      "Red Bull Mojito": "Red Bull Mojito",
+    },
+    subs: {
+      "Smoothie": "Strawberry · Mango · Berries · Peach · Kiwi · Lemon Mint · Berry Mix",
+      "Milk Shake": "Vanilla · Chocolate · Oreo · Lotus · Berry · Strawberry · Caramel · Pistachio · Mango · Mixed Berries",
+      "Frappé": "Caramel · Mocha · White Mocha",
+      "Mojito": "Lemon Mint · Blueberry · Strawberry · Passion Fruit · Pineapple",
+    },
+    addons: ["Hazelnut", "Vanilla", "Chocolate", "Caramel", "Topping", "Mixed Nuts", "Honey", "Pistachio", "Lotus"],
+  },
+  ar: {
+    heroTitle: ["ماذا تريد", "اليوم؟"],
+    heroSub: "خصّص مشروبك بالإضافات · +٢٠ جنيه لكل إضافة",
+    est: "تأسست ٢٠٢٤",
+    perAddition: "لكل إضافة",
+    addedTo: "تُضاف لأي مشروب",
+    addFlavors: "أضف أيًا من النكهات التالية لمشروبك بتكلفة إضافية.",
+    items: "عنصر",
+    allPrices: "جميع الأسعار شاملة الضرائب · شكراً لزيارتكم",
+    address: "امتداد بوابة توشكى · آخر سور الجامعة ـ أمام كوبري الجامعة",
+    sections: {
+      coffee: "القهوة",
+      iced: "المشروبات المثلجة",
+      hot: "المشروبات الساخنة",
+      juice: "العصائر الطازجة",
+      specials: "المميزات",
+      addons: "الإضافات",
+    },
+    drinks: {
+      "Espresso": "إسبريسو",
+      "Turkish Coffee": "قهوة تركية",
+      "French Coffee": "قهوة فرنسية",
+      "Macchiato": "ماكياتو",
+      "Hazelnut Coffee": "قهوة بالبندق",
+      "Americano": "أمريكانو",
+      "Cortado": "كورتادو",
+      "Flat White": "فلات وايت",
+      "Cappuccino": "كابتشينو",
+      "Latte": "لاتيه",
+      "Spanish Latte": "لاتيه إسباني",
+      "Mocha": "موكا",
+      "Caramel Macchiato": "ماكياتو كراميل",
+      "Iced Americano": "أمريكانو بارد",
+      "Iced Tea": "شاي مثلج",
+      "Iced Latte": "لاتيه بارد",
+      "Iced Cappuccino": "كابتشينو بارد",
+      "Iced Chocolate": "شوكولاتة باردة",
+      "Iced Mocha": "موكا باردة",
+      "Iced Spanish Latte": "لاتيه إسباني بارد",
+      "Iced Caramel Macchiato": "ماكياتو كراميل بارد",
+      "Iced White Mocha": "موكا بيضاء باردة",
+      "Classic Tea": "شاي كلاسيك",
+      "Flavour Tea": "شاي بالنكهات",
+      "Karak Tea": "شاي كرك",
+      "Hot Cider": "سيدر ساخن",
+      "Sahlab": "سحلب",
+      "Hot Chocolate": "شوكولاتة ساخنة",
+      "Strawberry": "فراولة",
+      "Mango": "مانجو",
+      "Banana": "موز",
+      "Kiwi": "كيوي",
+      "Lemon Mint": "ليمون بالنعناع",
+      "Avocado": "أفوكادو",
+      "Smoothie": "سموذي",
+      "Milk Shake": "ميلك شيك",
+      "Frappé": "فرابيه",
+      "Mojito": "موهيتو",
+      "Red Bull Mojito": "موهيتو ريد بول",
+    },
+    subs: {
+      "Smoothie": "فراولة · مانجو · توت · خوخ · كيوي · ليمون بالنعناع · خلطة التوت",
+      "Milk Shake": "فانيلا · شوكولاتة · أوريو · لوتس · توت · فراولة · كراميل · فستق · مانجو · توت مشكل",
+      "Frappé": "كراميل · موكا · موكا بيضاء",
+      "Mojito": "ليمون بالنعناع · توت أزرق · فراولة · فاكهة العاطفة · أناناس",
+    },
+    addons: ["بندق", "فانيلا", "شوكولاتة", "كراميل", "توبينج", "مكسرات مشكلة", "عسل", "فستق", "لوتس"],
+  },
+};
+
+// ─── Menu Data ──────
 const SECTIONS = [
   {
     id: "coffee", label: "Coffee", emoji:Coffee,
@@ -153,6 +292,10 @@ const D = {
 
 export default function CafeMenu() {
   const [isDark, setIsDark] = useState(false);
+    const [lang, setLang] = useState("en");
+   const t = T[lang];
+  const isAr = lang === "ar";
+  const dir = isAr ? "rtl" : "ltr";
   const [activeTab, setActiveTab] = useState("coffee");
   const [hovered, setHovered] = useState(null);
 
@@ -160,7 +303,9 @@ export default function CafeMenu() {
   const section = SECTIONS.find(s => s.id === activeTab);
 
   return (
-    <div style={{ minHeight: "100vh", background: c.page, fontFamily: "'Georgia', 'Times New Roman', serif", transition: "background 0.3s" }}>
+    <div dir={dir} style={{  minHeight: "100vh", background: c.page, fontFamily: isAr
+        ? "'Cairo', 'Segoe UI', sans-serif"
+        : "'Georgia', 'Times New Roman', serif", transition: "background 0.3s"  }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -182,15 +327,35 @@ export default function CafeMenu() {
            <img src={isDark? darkLogo : logo} alt="logo" width={50} />
           {/* <span style={{ fontSize: 20 }}>☕</span> */}
           <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
+             fontFamily: isAr ? "'Cairo', sans-serif" : "'Cormorant Garamond'",
             fontSize: 20, fontWeight: 600,
             color: c.headerFg,
             letterSpacing: "0.02em",
                marginTop:" 4px"
           }}>
-            ZONE SPOT
-          </span>
+              {isAr ? "زون سبوت" : "Zone Spot"}          </span>
         </div>
+        <div style={{
+          display:"flex",
+          gap:"6px"
+        }}>
+         <button
+            onClick={() => setLang(isAr ? "en" : "ar")}
+            style={{
+              display: "flex", alignItems: "center", gap: 6,
+              padding: "6px 13px", borderRadius: 99,
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              cursor: "pointer", color: c.headerFg,
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 12, fontWeight: 600,
+              transition: "background 0.2s",
+            }}
+          >
+            {/* <Languages size={13} strokeWidth={2} /> */}
+            {isAr ? "EN" : "AR"}
+          </button>
+
         <button
           onClick={() => setIsDark(!isDark)}
           style={{
@@ -208,6 +373,7 @@ export default function CafeMenu() {
           {isDark ? <Sun size={15}/> : <Moon size={15}/>}
           
         </button>
+        </div>
       </header>
 
       {/* ── HERO ── */}
@@ -233,28 +399,29 @@ export default function CafeMenu() {
            <div style={{ display:"flex", alignItems:"center", gap:10, justifyContent:"center" }}>
           <div style={{ width:28, height:1, background:c.textMuted }} />
           <span style={{
-            fontFamily:"'Inter', sans-serif",
-            fontSize:10, fontWeight:600, letterSpacing:"0.2em",
-            textTransform:"uppercase", color:c.navSub,
-          }}>Est. 2024</span>
+            fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",
+            fontSize: 10, fontWeight: 600, letterSpacing: isAr ? 0 : "0.2em",
+            textTransform: "uppercase", color: "rgba(255,255,255,0.45)",
+          }}>
+            {t.est}
+            </span>
           <div style={{ width:28, height:1, background:c.textMuted }} />
         </div>
         <h1 style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: 42, fontWeight: 700,
-          color: c.headerFg,
-          lineHeight: 1.12,
-          letterSpacing: "-0.01em",
-          marginBottom: 14,
+          fontFamily: isAr ? "'Cairo', sans-serif" : "'Cormorant Garamond', serif",
+          fontSize: isAr ? 34 : 42, fontWeight: 700,
+          color: c.headerFg, lineHeight: 1.15,
+          letterSpacing: isAr ? 0 : "-0.01em",
+          marginBottom: 12,
         }}>
-          What would you<br />like today?
+          {t.heroTitle[0]}<br />{t.heroTitle[1]}
         </h1>
-        <p style={{
-          fontFamily: "'Inter', sans-serif",
+       <p style={{
+          fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",
           fontSize: 13, color: "rgba(255,255,255,0.45)",
-          fontWeight: 400, lineHeight: 1.6,
+          fontWeight: 400, lineHeight: 1.7,
         }}>
-          Customize any drink with add-ons · +20 L.E each
+          {t.heroSub}
         </p>
       </div>
 
@@ -279,8 +446,8 @@ export default function CafeMenu() {
                 borderRadius: 8,
                 border: active ? "none" : `1px solid ${c.border}`,
                 cursor: "pointer",
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 13,
+                fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",
+                fontSize: isAr ? 12 : 12,
                 fontWeight: active ? 600 : 500,
                 background: active ? c.tabActive : c.tabIdle,
                 color: active ? c.tabActiveFg : c.tabIdleFg,
@@ -293,7 +460,7 @@ export default function CafeMenu() {
                 alignItems:"center",
                 
               }}>
-              {<s.emoji size={15} style={{marginRight:"4px"}}/>}{s.label}
+              {<s.emoji size={15} style={{marginLeft:"4px",marginRight:"4px"}}/>}  {t.sections[s.id]}
               </div>
             </button>
           );
@@ -311,23 +478,24 @@ export default function CafeMenu() {
   style={{
     display:"flex",
     alignItems:"center",
-    fontFamily: "'Cormorant Garamond', serif",
-    fontSize: 26,
-    fontWeight: 600,
+                  fontFamily: isAr ? "'Cairo', sans-serif" : "'Cormorant Garamond', serif",
+              fontSize: isAr ? 20 : 24, fontWeight: 700,
+              fontStyle: isAr ? "normal" : "italic",
+   
     color: c.text,
     letterSpacing: "0.01em",
-    fontStyle: "italic",
+    
   }}
 >
-  <section.emoji size={24} style={{marginRight:"4px"}}/> {section.label}
+  <section.emoji size={24} style={{marginRight:"4px", marginLeft:"4px"}}/>  {t.sections[section.id]}
 </h2>
+
           {section.items && (
             <span style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 12, color: c.textMuted,
+            fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",fontSize: 12, color: c.textMuted,
               marginLeft: "auto", fontWeight: 500,
             }}>
-              {section.items.length} items
+            { !isAr ? `${section.items.length} ${t.items} `: null}
             </span>
           )}
         </div>
@@ -355,30 +523,30 @@ export default function CafeMenu() {
                   background: hovered === `${activeTab}-${i}` ? c.rowHover : "transparent",
                   transition: "background 0.15s ease",
                   cursor: "default",
+                 //   flexDirection: isAr ? "row-reverse" : "row",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 ,}}>
                   <div style={{
                     width: 6, height: 6, borderRadius: "50%",
                     background: c.accent, opacity: 0.5, flexShrink: 0,
                   }} />
                   <span style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 14.5, fontWeight: 450,
+  fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",                    fontSize: 14.5, fontWeight: 450,
                     color: c.text, lineHeight: 1.3,
                   }}>
-                    {item.name}
-                  </span>
+ {t.drinks[item.name] || item.name}
+                   </span>
                 </div>
                 <div style={{
                   display: "flex", alignItems: "baseline", gap: 3,
                   background: c.priceBg,
                   padding: "5px 13px", borderRadius: 8,
                   flexShrink: 0,
+                 flexDirection:  isAr ?"row-reverse" : null
                 }}>
                   <span style={{
-                    //fontFamily: "'Cormorant Garamond', serif",
-                    fontSize: 17, fontWeight: 700,
+ fontFamily: isAr ? "'Cairo', sans-serif" : "'Cairo', sans-serif', serif",                    fontSize: 17, fontWeight: 700,
                     color: c.price, letterSpacing: "-0.01em",
                   }}>
                     {item.price}
@@ -387,6 +555,7 @@ export default function CafeMenu() {
                     fontFamily: "'Inter', sans-serif",
                     fontSize: 10, fontWeight: 500,
                     color: c.textMuted,
+                    
                   }}>L.E</span>
                 </div>
               </div>
@@ -419,23 +588,21 @@ export default function CafeMenu() {
               >
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{
-                    fontFamily: "'Inter', sans-serif",
-                    fontSize: 14.5, fontWeight: 500,
+                   fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",                    fontSize: 14.5, fontWeight: 500,
                     color: c.text,
                     marginBottom: g.sub ? 6 : 0,
                     display: "flex", alignItems: "center", gap: 8,
                   }}>
                     <div style={{ width: 6, height: 6, borderRadius: "50%", background: c.accent, opacity: 0.5, flexShrink: 0 }} />
-                    {g.name}
+                     {t.drinks[g.name] || g.name}
                   </div>
                   {g.sub && (
                     <div style={{
-                      fontFamily: "'Inter', sans-serif",
-                      fontSize: 12, color: c.textSub,
+                      fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans",                     fontSize: 12, color: c.textSub,
                       lineHeight: 1.6, fontWeight: 400,
                       paddingLeft:16,textAlign:"start"
                     }}>
-                      {g.sub}
+                      {t.subs[g.name] || g.name}
                     </div>
                   )}
                 </div>
@@ -443,11 +610,12 @@ export default function CafeMenu() {
                   display: "flex", alignItems: "baseline", gap: 3,
                   background: c.priceBg, padding: "5px 13px",
                   borderRadius: 8, flexShrink: 0,
+                  flexDirection:"row-reverse"
                 }}>
-                  <span style={{ fontSize: 17, fontWeight: 700, color: c.price }}>
+                  <span style={{ fontSize: 17, fontWeight: 700, color: c.price , }}>
                     {g.price}
                   </span>
-                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 500, color: c.textMuted }}>L.E</span>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 10, fontWeight: 500, color: c.textMuted ,}}>L.E</span>
                 </div>
               </div>
             ))}
@@ -458,28 +626,25 @@ export default function CafeMenu() {
         {section.addons && (
           <div>
             <p style={{
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 13, color: c.textSub,
+              fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",              fontSize: 13, color: c.textSub,
               marginBottom: 18, lineHeight: 1.6,
             }}>
-              Add any of the following flavors to your drink for an extra charge.
-            </p>
+              {t.addFlavors}            </p>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24 ,justifyContent: isAr ? "flex-start" : "flex-start"}}>
               {section.addons.map((a, i) => (
                 <div key={i} style={{
                   padding: "10px 18px",
                   background: c.pillBg,
                   border: `1px solid ${c.pillBorder}`,
                   borderRadius: 10,
-                  fontFamily: "'Inter', sans-serif",
-                  fontSize: 13, fontWeight: 500,
+                  fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",                  fontSize: 13, fontWeight: 500,
                   color: c.text,
                   transition: "background 0.2s",
                   display: "flex", alignItems: "center", gap: 6,
                 }}>
                   <span style={{ fontSize: 9, color: c.accent }}>✦</span>
-                  {a}
+                  {t.addons[i]}
                 </div>
               ))}
             </div>
@@ -492,14 +657,12 @@ export default function CafeMenu() {
               boxShadow: `0 4px 20px ${c.shadow}`,
             }}>
               <div>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, fontWeight: 600, color: c.headerFg, fontStyle: "italic" }}>
-                  Per addition
-                </div>
-                <div style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 3 }}>
-                  Added to any drink
-                </div>
+                <div style={{  fontFamily: isAr ? "'Cairo', sans-serif" : "'Cormorant Garamond'", fontSize: 18, fontWeight: 600, color: c.headerFg, fontStyle: "italic" }}>
+ {t.perAddition}                </div>
+                <div style={{ fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter'",fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 3 }}>
+                  {t.addedTo}                </div>
               </div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 4 ,flexDirection: isAr ? "row-reverse" : null }}>
                 <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 700, color: c.accent, letterSpacing: "-0.02em" }}>
                   20
                 </span>
@@ -522,26 +685,20 @@ export default function CafeMenu() {
           {/* <ZoneSpotLogo size={36} brown={isDark?"#C89040":"#C8A060"} /> */}
         </div>
         <div style={{
-          fontFamily:"'Cormorant Garamond', serif",
-          fontSize:16, fontStyle:"italic",
+          fontFamily: isAr ? "'Cairo', sans-serif" : "'Cormorant Garamond', serif",          fontSize:16, fontStyle:"italic",
           color:c.navSub, marginBottom:6,
         }}>
-          Zone Spot
-        </div>
+ {isAr ? "زون سبوت" : "Zone Spot"}        </div>
             <div style={{
-          fontFamily:"'Inter', sans-serif",
-          fontSize:9, letterSpacing:"0.14em",
+          fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",          fontSize:9, letterSpacing:"0.14em",
           color:c.textMuted, textTransform:"uppercase",
         }}>
-          امتدا بوابة توشكى · آخر سور الجامعة ـ امام كوبري الجامعة
-        </div>
+{t.address}        </div>
         <p style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 10, color: c.textMuted,
+          fontFamily: isAr ? "'Cairo', sans-serif" : "'Inter', sans-serif",          fontSize: 10, color: c.textMuted,
           letterSpacing: "0.1em", textTransform: "uppercase",
         }}>
-          All prices inclusive of taxes &nbsp;·&nbsp; Thank you for your visit
-        </p>
+  {t.allPrices}        </p>
       </footer>
     </div>
   );
