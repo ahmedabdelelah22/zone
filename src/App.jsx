@@ -482,9 +482,31 @@ export default function CafeMenu() {
           transition: "background 0.3s",
         }}
       >
-     
-
        
+        <div
+          style={{
+            position: "absolute",
+            top: -40,
+            right: -40,
+            width: 200,
+            height: 200,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.03)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: -60,
+            right: 60,
+            width: 140,
+            height: 140,
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.04)",
+          }}
+        /> 
+
+        
         <img src={isDark ? darkLogo : logo} alt="logo" width={150} />
         {/* </p> */}
         <div
@@ -520,7 +542,6 @@ export default function CafeMenu() {
             color: c.headerFg,
             lineHeight: 1.15,
             letterSpacing: isAr ? 0 : "-0.01em",
-          
           }}
         >
           {t.heroTitle[0]}
